@@ -1,24 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
+import { app } from './app-declare-utils';
 import './App.css';
 
 function App() {
+  const [currentRAM, setCurrentRAM] = useState('');
+  useEffect(() => {
+    const ramInterval = setInterval(() => {
+      const ramInfo = process.getSystemMemoryInfo();
+      setCurrentRAM(~~(ramInfo.free / ramInfo.total * 100) + '%');
+    }, 1000);
+    return () => {
+      clearInterval(ramInterval);
+    }
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      AppPath: {app.getAppPath()}
+      <br />
+      RAM free: {currentRAM}
     </div>
   );
 }
