@@ -4,7 +4,7 @@ Get started desktop app with electronjs + react + typescript
 
 ## 1. Create react app with typescript template
 ```bash
-yarn create react-app --template typescript
+yarn create react-app <your_project_name> --template typescript
 ```
 
 ## 2. Add electronjs packages
