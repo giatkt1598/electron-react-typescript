@@ -1,8 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as _ from "electron";
 
-// import {BrowserWindow} from '@electron/remote'
-
 export const {
   BrowserView,
   BrowserWindow,

@@ -1,13 +1,8 @@
-// Type definitions for Electron 18.0.4
-// Project: http://electronjs.org/
-// Definitions by: The Electron Team <https://github.com/electron/electron>
-// Definitions: https://github.com/electron/electron-typescript-definitions
-
 /// <reference types="node" />
 
 type GlobalEvent = Event & { returnValue: any };
 
-declare namespace Electron2 {
+declare namespace ElectronTs {
   namespace Remote {
     export {
       ClientRequest,
@@ -30,7 +25,7 @@ declare namespace Electron2 {
       TouchBarSlider,
       TouchBarSpacer,
       WebRequest,
-    } from 'electron/main';
+    } from "electron/main";
 
     // Taken from `RemoteMainInterface`
     export var app: Electron.App;
@@ -72,18 +67,11 @@ declare namespace Electron2 {
     export function getGlobal(name: string): any;
     export var process: NodeJS.Process;
     export var require: NodeJS.Require;
-
   }
 }
 
-// declare module '@electron/remote' {
-//   export = Electron2.Remote;
-// }
-
 interface NodeRequireFunction {
-  (moduleName: '@electron/remote'): typeof Electron2.Remote;
+  (moduleName: "@electron/remote"): typeof ElectronTs.Remote;
 }
 
-interface NodeRequire extends NodeRequireFunction {
-  // (moduleName: '@electron/remote'): typeof Electron2.Remote;
-}
+interface NodeRequire extends NodeRequireFunction {}

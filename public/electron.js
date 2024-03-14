@@ -1,9 +1,9 @@
-const { app, BrowserWindow } = require('electron')
+import isDev from 'electron-is-dev';
+import { app, BrowserWindow } from 'electron';
+import electronRemote from '@electron/remote/dist/src/main/index.js';
+import path from 'path';
 
-const path = require('path')
-const isDev = require('electron-is-dev')
-
-require('@electron/remote/main').initialize()
+electronRemote.initialize();
 function createWindow() {
     // Create the browser window.
     const win = new BrowserWindow({
@@ -15,7 +15,7 @@ function createWindow() {
             contextIsolation: false
         },
     })
-    require("@electron/remote/main").enable(win.webContents);
+    electronRemote.enable(win.webContents);
 
     win.loadURL(
         isDev
