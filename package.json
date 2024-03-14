@@ -2,6 +2,7 @@
   "name": "electron-react-typescript",
   "version": "0.1.0",
   "private": true,
+  "homepage": "./",
   "type": "module",
   "main": "public/electron.js",
   "scripts": {

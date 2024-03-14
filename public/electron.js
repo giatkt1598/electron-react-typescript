@@ -2,6 +2,7 @@ import isDev from 'electron-is-dev';
 import { app, BrowserWindow } from 'electron';
 import electronRemote from '@electron/remote/dist/src/main/index.js';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
 electronRemote.initialize();
 function createWindow() {
@@ -12,11 +13,14 @@ function createWindow() {
         webPreferences: {
             nodeIntegration: true,
             enableRemoteModule: true,
-            contextIsolation: false
+            contextIsolation: false,
+            webSecurity: isDev
         },
     })
     electronRemote.enable(win.webContents);
 
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
     win.loadURL(
         isDev
             ? 'http://localhost:3000'
